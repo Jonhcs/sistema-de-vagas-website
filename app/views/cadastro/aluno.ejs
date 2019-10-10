@@ -1,0 +1,23 @@
+<%- contentFor('body') %>
+
+     <div class="container">
+            <form action="/cadastro" method="POST">
+                    <div class="form-group">
+                        <label for="name">Nome</label>
+                        <input type="text" name="name" class="form-control" value="<%= aluno.name %>" aria-describedby="emailHelp" placeholder="Seu Nome">
+                    </div>
+                    <div class="form-group">
+                        <label for="telefone">Telefone</label>
+                        <input type="text" class="form-control" name="telefone" value="<%= aluno.telefone %>" placeholder="Telefone">
+                    </div>
+                    <div class="form-group">
+                        <label for="valor_hora">Valor/Hora</label>
+                        <input type="text" class="form-control" name="valor_hora" value="<%= aluno.valor_hora %>" placeholder="Digite seu valor/hora" >
+                    </div>
+                    <button type="submit" class="btn btn-primary">Enviar</button>
+            </form>
+     </div>
+     <div class="container">
+        </h1>Aguarde que em breve entraremos em contato </h1>
+        <a href="/" >Voltar para Página Inicial</a> 
+     </div>

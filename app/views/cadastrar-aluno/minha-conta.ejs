@@ -1,0 +1,19 @@
+<%- contentFor('body') %>
+
+    <div class="container">
+        <form action="/cadastrar-aluno" method="POST">
+             <div class="form-group">
+                 <label for="name">Nome</label>
+                 <input type="text" name="name" class="form-control" value="<%= aluno.name %>" aria-describedby="emailHelp" placeholder="Seu Nome">
+             </div>
+             <div class="form-group">
+                 <label for="email">Email</label>
+                 <input type="email" class="form-control" name="email" value="<%= aluno.email %>" placeholder="Email">
+             </div>
+             <div class="form-group">
+                 <label for="password">Senha</label>
+                 <input type="password" class="form-control" name="password" value="<%= aluno.password %>" placeholder="Password" >
+             </div>
+             <button type="submit" class="btn btn-primary">Atualizar</button>
+        </form>
+</div>
