@@ -6,31 +6,28 @@ const bcrypt = require('bcryptjs')
 module.exports = (passport) => {
     passport.use(new LocalStrategy({
         usernameField: 'email',
-        passwordField: 'password'
+        passwordField: 'password',
+        passReqToCallback: true
     },
-        (email, password, done) => {
-            Cadastrar.findOne({email: email}).then((usuario) => {
-                Cadastrar.findOne({email: email})
-                if (!usuario) {
-                    console.log("Essa conta não existe")
-
-                    return done(null, false)
-                }
-
-                bcrypt.compare(password, usuario.password, (erro, batem) => {
-                    
-                    if (batem) {
-                        console.log('senha bateu')
-                        return done(null, usuario)
-                    }else {
-                        console.log( "Senha está errada")
+        (req, email, password, done) => {
+            Cadastrar
+                .findOne({email: email})
+                .then((usuario) => {
+                    if (!usuario) {
+                        console.log("Essa conta não existe")
                         return done(null, false)
-
                     }
+
+                    bcrypt.compare(password, usuario.password, (erro, batem) => {
+                    
+                        if (batem) {
+                            console.log('senha bateu')
+                            return done(null, usuario)
+                        }else {
+                            console.log( "Senha está errada")
+                            return done(null, false)
+                        }
                 })
-            })
-            .catch((error) => {
-                console.log(error)
             })
 
     }))
